@@ -43,3 +43,8 @@
 .preview img {
   object-fit: cover;
 }
+.buttonWrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}

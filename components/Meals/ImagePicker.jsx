@@ -20,12 +20,13 @@ const ImagePicker = ({ label, name }) => {
     }
 
     const fileReader = new FileReader();
+    fileReader.readAsDataURL(file);
+
     fileReader.onload = () => {
       setPickedImage(fileReader.result);
     };
-
-    fileReader.readAsDataURL(file);
   }
+
   return (
     <div className={classes.picker}>
       <label htmlFor={name}>{label}</label>
@@ -45,13 +46,22 @@ const ImagePicker = ({ label, name }) => {
           accept="image/png, image/jpeg, image/jpg"
           onChange={handleImageChange}
         />
-        <button
-          onClick={habdlePickClick}
-          className={classes.button}
-          type="button"
-        >
-          Pick an image
-        </button>
+        <div className={classes.buttonWrapper}>
+          <button
+            onClick={habdlePickClick}
+            className={classes.button}
+            type="button"
+          >
+            Pick an image
+          </button>
+          <button
+            className={classes.button}
+            type="button"
+            onClick={() => setPickedImage(null)}
+          >
+            Delete Image
+          </button>
+        </div>
       </div>
     </div>
   );
